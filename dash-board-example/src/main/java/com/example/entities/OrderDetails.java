@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "G_T_ORDERS_Details")
-public class OrderDetails {
+public class OrderDetails implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,6 +48,7 @@ public class OrderDetails {
         this.updatedDate = LocalDateTime.now();
     }
     @JsonIgnore
+
     public OrderDetailsDTO getEntity(){
         OrderDetailsDTO details = new OrderDetailsDTO();
         BeanUtils.copyProperties(this,details);

@@ -1,6 +1,6 @@
 package com.example.entities;
 
-import com.example.dtos.ItemDTO;
+import com.example.dtos.ItemTypeDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -20,24 +19,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "G_T_ITEMS")
-public class Item implements Serializable {
+@Table(name = "G_R_ITEMS_TYPES")
+public class ItemType implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 20,unique = true,nullable = false,updatable = false)
-    private String itemCode;
-    @Column(length = 100)
-    private String itemDescription;
-    private String itemType;
-    private String itemPrice;
-    private Integer aviableQty;
-    private Double sellingPrice;
-    @Column(length = 20)
+    private String code;
+    private String description;
     private String colorCode;
-
-    @Column(length = 20)
-    private String itemTypeColorCode;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -47,7 +37,6 @@ public class Item implements Serializable {
     public void setCreatedDate() {
         this.createdDate = LocalDateTime.now();
     }
-
     @JsonIgnore
     @PreUpdate
     public void setUpdatedDate() {
@@ -55,9 +44,10 @@ public class Item implements Serializable {
     }
 
     @JsonIgnore
-    public ItemDTO getDto(){
-        ItemDTO item = new ItemDTO();
-        BeanUtils.copyProperties(this,item);
-        return item;
+    public ItemTypeDTO getDto(){
+        ItemTypeDTO itemType = new ItemTypeDTO();
+        BeanUtils.copyProperties(this,itemType);
+        return itemType;
     }
 }
+

@@ -7,6 +7,7 @@ import com.example.repositories.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ import java.util.Optional;
 /**
  * |** @author 'Gihan Rathnayaka'**|
  */
-@Repository
+@Service
 @Slf4j
 public class OrderService {
 

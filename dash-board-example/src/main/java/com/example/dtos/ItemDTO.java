@@ -30,6 +30,11 @@ public class ItemDTO {
     private String itemPrice;
     private Integer aviableQty;
     private Double sellingPrice;
+    @Size(max = 20 ,message = "Item color too long")
+    private String colorCode;
+
+    @Size(max = 20 ,message = "Item color too long")
+    private String itemTypeColorCode;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;

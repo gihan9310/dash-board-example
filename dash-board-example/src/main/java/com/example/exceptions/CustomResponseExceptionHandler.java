@@ -21,4 +21,22 @@ public class CustomResponseExceptionHandler  extends ResponseEntityExceptionHand
         return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleProjectObjectException(OrderException exception , WebRequest request){
+        OrderExceptionResponse response = new OrderExceptionResponse(exception.getMessage());
+        return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleProjectObjectException(ItemTypeException exception , WebRequest request){
+        ItemTypeExceptionResponse response = new ItemTypeExceptionResponse(exception.getMessage());
+        return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleProjectObjectException(SupplierException exception , WebRequest request){
+        SupplierExceptionResponese response = new SupplierExceptionResponese(exception.getMessage());
+        return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
+
 }
