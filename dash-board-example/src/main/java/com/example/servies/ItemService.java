@@ -75,4 +75,16 @@ public class ItemService {
             return null;
         }
     }
+
+    public List<ItemDTO> getAllItemsByItemTypes(String itemType) {
+
+        try {
+            List<Item> items = itemRepository.findAllByItemType(itemType);
+            List<ItemDTO> itemsList = new ArrayList<>();
+            items.forEach(i->itemsList.add(i.getDto()));
+            return itemsList;
+        }catch (Exception e){
+            throw new ItemException("Items Selection Error");
+        }
+    }
 }

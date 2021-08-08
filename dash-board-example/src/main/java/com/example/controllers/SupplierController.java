@@ -38,4 +38,13 @@ public class SupplierController {
         List<SupplierDTO> supplierDTOS = supplierService.getAllSuppliers();
         return new ResponseEntity(supplierDTOS, HttpStatus.OK);
     }
+
+    @PutMapping(value = "/update",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> update(@RequestBody SupplierDTO dto , BindingResult result){
+        if(result.hasErrors()){
+            return BindingErrorsResponse.errorFields(result.getFieldErrors());
+        }
+        SupplierDTO supplierDTO =supplierService.update(dto);
+        return new ResponseEntity(supplierDTO, HttpStatus.OK);
+    }
 }

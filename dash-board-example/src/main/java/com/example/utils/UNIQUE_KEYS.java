@@ -6,8 +6,10 @@ package com.example.utils;
 public enum UNIQUE_KEYS {
 
     ITEM_TYPE_KEY ("TYPE_KEY00"),
-    SUPPLIER_REQ ("SUPPLIER_REQ");
+    SUPPLIER_REQ ("SUPPLIER_REQ"),
+    INV_CODE ("INV_CODE")
     ;
+
 
     private String key;
 

@@ -8,6 +8,7 @@ import com.example.utils.UNIQUE_KEYS;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
 
+    @Transactional
     public SupplierDTO create(SupplierDTO dto) {
         log.info("Creating Suppliers..........");
         try {
@@ -47,6 +49,19 @@ public class SupplierService {
             return list;
         }catch (Exception e){
             throw new SupplierException("Can not get all supplier account.");
+        }
+    }
+
+    @Transactional
+    public SupplierDTO update(SupplierDTO dto) {
+
+        log.info("Creating Suppliers..........");
+        try {
+            Supplier entity = dto.getEntity();
+            return supplierRepository.save(entity).getDto();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SupplierException("Supplier account cannot create");
         }
     }
 }

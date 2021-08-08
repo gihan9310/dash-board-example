@@ -57,4 +57,10 @@ public class ItemServiceController {
         Long nextId = itemService.delete(id);
         return new ResponseEntity(nextId, HttpStatus.OK);
     }
+
+    @GetMapping(value = "getAll/{itemType}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllByType(@PathVariable("itemType")String itemType){
+        List<ItemDTO> allItems = itemService.getAllItemsByItemTypes(itemType);
+        return new ResponseEntity(allItems, HttpStatus.OK);
+    }
 }

@@ -39,4 +39,10 @@ public class CustomResponseExceptionHandler  extends ResponseEntityExceptionHand
         return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleProjectObjectException(CommonException exception , WebRequest request){
+        CommonExceptionResponse response = new CommonExceptionResponse(exception.getMessage());
+        return  new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+    }
+
 }

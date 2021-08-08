@@ -22,4 +22,6 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     List<ItemTypeDashBordDTO> getAllItemType();
 
     boolean existsByItemType(String itemType);
+
+    List<Item>findAllByItemType(String itemType);
 }
